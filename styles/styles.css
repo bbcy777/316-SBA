@@ -1,0 +1,24 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(75, 28, 1);
+}
+
+.navbar{
+    background-image: url(../img/header.jpg)
+}
+
+.navbar-brand{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 3px 3px 3px black;
+}
+div.main {
+    display: flex;
+    padding: 1.5em;
+}
+div.mainColumn {
+    flex:70%;
+    padding-right: 1em;
+}
+div.sideColumn {
+   flex:30%;
+}
