@@ -21,6 +21,7 @@ function handleUsername(evt){
 
 function createCart(name, content) {
     const frag = document.createDocumentFragment();
+//example https://codesandbox.io/p/sandbox/documentfragment-example-t3dj56?file=%2Fsrc%2Findex.js%3A35%2C42&from-embed=
 
 
     return frag;
