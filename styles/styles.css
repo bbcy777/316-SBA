@@ -11,14 +11,31 @@
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-shadow: 3px 3px 3px black;
 }
-div.main {
+div#content{
     display: flex;
     padding: 1.5em;
 }
-div.mainColumn {
-    flex:70%;
-    padding-right: 1em;
+/* div.main {
+    display: flex;
+    padding: 1.5em;
+} */
+
+div.card{
+    margin: .2em;
+}
+div#menu {
+    flex:85%;
 }
 div.sideColumn {
-   flex:30%;
+   display: none;
+   height: 100%;
+   border-radius: 15px;
+   border: .3em solid rgb(22, 16, 49);
+   flex:15%;
+   width: 15%;
+   top: 0;
+}
+
+.expand{
+    width: 85%;
 }

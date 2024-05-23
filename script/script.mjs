@@ -1,9 +1,18 @@
 //validate username and save to localStorage
 const user = document.getElementById(`username`);
 const form = document.getElementById(`user`);
-const userName = ``;
+const menuDiv = document.getElementById(`menu`);
+const sideDiv = document.getElementById(`cart`);
+
+const buttons = document.querySelectorAll(`.card button`);
+let userName = ``;
 
 form.addEventListener('submit',handleUsername)
+
+buttons.forEach(button => {
+    button.addEventListener('click', handleMenu);
+});
+
 
 function handleUsername(evt){
     evt.preventDefault();
@@ -13,36 +22,39 @@ function handleUsername(evt){
         alert(`Name cannot contain any special characters or numbers`)
         return false;
     } else {
-        userName = user.value;
-        localStorage.setItem(`userName`, userName)
+        userName = usernameValue;
+        showTemplate();
+        form.reset();
+
+        // localStorage.setItem(`userName`, JSON.stringify(usernameValue))
+        console.log(userName);
     }
 }
 //when user submit name on nav bar, show the cart div
+function showTemplate() {
+    const postTemplate = document.getElementById(`cartUser`);
+    const clone = postTemplate.content.cloneNode(`true`);
+    const addUser = clone.querySelector(`h4`);
+    addUser.textContent = `${userName}'s cart`;
 
-function createCart(name, content) {
-    const frag = document.createDocumentFragment();
-//example https://codesandbox.io/p/sandbox/documentfragment-example-t3dj56?file=%2Fsrc%2Findex.js%3A35%2C42&from-embed=
-
-
-    return frag;
+    sideDiv.style.display = `block`;
+    sideDiv.appendChild(clone);
 }
 
 //when user add an item in cart, move the h5 element to cart
-const menuDiv = document.getElementById(`menu`);
 
-menuDiv.addEventListener('click', handleMenu);
 
 function handleMenu(evt) {
     evt.preventDefault();
     const menuItem = evt.target;
     const title = menuItem.parentElement.firstElementChild.textContent;
+
+    const line = document.createElement(`hr`)
+    sideDiv.appendChild(line);
+
+    const menuList = document.createElement(`li`);
+    menuList.textContent = title;
+    sideDiv.appendChild(menuList);
+
+    sideDiv.style.position = `sticky`;
 }
-// //JSON Placeholder API from class example. Not sure what it does
-// (async () => {
-//     const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-//     const posts = await res.json();
-  
-//     posts.forEach((post) => {
-//       app.appendChild(createPost(post.title, post.body));
-//     });
-//   })();
