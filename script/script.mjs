@@ -4,6 +4,8 @@ const form = document.getElementById(`user`);
 const menuDiv = document.getElementById(`menu`);
 const sideDiv = document.getElementById(`cart`);
 
+
+
 const buttons = document.querySelectorAll(`.card button`);
 let userName = ``;
 
@@ -13,7 +15,19 @@ buttons.forEach(button => {
     button.addEventListener('click', handleMenu);
 });
 
+//not working on adding event listener.................
+const removeImg = document.querySelectorAll(`.removeBtn`);
+console.log(removeImg);
+removeImg.forEach(image => {
+    image.addEventListener(`click`, removeList);
+})
+const submitBtn = document.querySelector('.submitBtn');
+submitBtn.addEventListener(`click`, (evt)=>{
+    evt.preventDefault();
+    sideDiv.style.display=`none`
+})
 
+//all functions
 function handleUsername(evt){
     evt.preventDefault();
     const usernameValue = user.value.trim();
@@ -26,8 +40,7 @@ function handleUsername(evt){
         showTemplate();
         form.reset();
 
-        // localStorage.setItem(`userName`, JSON.stringify(usernameValue))
-        console.log(userName);
+        // console.log(userName);
     }
 }
 //when user submit name on nav bar, show the cart div
@@ -39,22 +52,43 @@ function showTemplate() {
 
     sideDiv.style.display = `block`;
     sideDiv.appendChild(clone);
+
+    const line = document.createElement(`hr`)
+    sideDiv.appendChild(line);
+
+    const submitBtn = document.createElement(`button`);
+    submitBtn.textContent = `I'm done!`;
+    sideDiv.appendChild(submitBtn);
+    submitBtn.classList.toggle(`submitBtn`);
 }
 
-//when user add an item in cart, move the h5 element to cart
-
+//when user add an item in cart, move the h5 element to cart and add a remove button
 
 function handleMenu(evt) {
     evt.preventDefault();
     const menuItem = evt.target;
     const title = menuItem.parentElement.firstElementChild.textContent;
 
-    const line = document.createElement(`hr`)
-    sideDiv.appendChild(line);
 
     const menuList = document.createElement(`li`);
     menuList.textContent = title;
     sideDiv.appendChild(menuList);
 
+    const removeBtn = document.createElement(`img`);
+    removeBtn.src = `../img/delete.png`
+    menuList.appendChild(removeBtn);
+    removeBtn.classList.toggle(`removeBtn`);
+
+    
+    const line = document.createElement(`hr`)
+    menuList.appendChild(line);
+
     sideDiv.style.position = `sticky`;
+
+    console.log(removeBtn.parentElement)
+}
+
+function removeList(el) {
+    el.preventDefault();
+    console.log(el.target);
 }
