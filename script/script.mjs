@@ -8,28 +8,16 @@ const sideDiv = document.getElementById(`cart`);
 
 const buttons = document.querySelectorAll(`.card button`);
 let userName = ``;
-
+//event listener to validate the name and open side div
 form.addEventListener('submit',handleUsername)
 
+//event listener to add menu list to cart
 buttons.forEach(button => {
     button.addEventListener('click', handleMenu);
 });
 
-//not working on adding event listener to the sidebar.................
-const removeImg = document.querySelectorAll(`.removeBtn`);
-console.log(removeImg);
-removeImg.forEach(image => {
-    image.addEventListener(`click`, removeList);
-})
-const submitBtn = document.querySelector('.submitBtn');
-submitBtn.addEventListener(`click`, (evt)=>{
-    evt.preventDefault();
-    sideDiv.style.display=`none`
-})
 
-//all functions
-
-//validate username. If it pass, side div will display.
+//function to validate username. If it pass, side div will display.
 function handleUsername(evt){
     evt.preventDefault();
     const usernameValue = user.value.trim();
@@ -58,10 +46,11 @@ function showTemplate() {
     const line = document.createElement(`hr`)
     sideDiv.appendChild(line);
 
-    const submitBtn = document.createElement(`button`);
-    submitBtn.textContent = `I'm done!`;
-    sideDiv.appendChild(submitBtn);
-    submitBtn.classList.toggle(`submitBtn`);
+    // //remove cart is not working
+    // const submitBtn = document.createElement(`button`);
+    // submitBtn.textContent = `I'm done!`;
+    // sideDiv.appendChild(submitBtn);
+    // submitBtn.classList.toggle(`submitBtn`);
 }
 
 //when user add an item in cart, move the h5 element to cart and add a remove button
@@ -76,6 +65,7 @@ function handleMenu(evt) {
     menuList.textContent = title;
     sideDiv.appendChild(menuList);
 
+    //add a trash can img to remove the item, but the event listener is not working.
     const removeBtn = document.createElement(`img`);
     removeBtn.src = `../img/delete.png`
     menuList.appendChild(removeBtn);
@@ -90,7 +80,21 @@ function handleMenu(evt) {
     console.log(removeBtn.parentElement)
 }
 
-function removeList(el) {
-    el.preventDefault();
-    console.log(el.target);
-}
+// //not working on adding event listener to the sidebar.................
+// const templateItem = document.getElementById(`cartUser`);
+// const removeImg = document.querySelectorAll(`.removeBtn`);
+// console.log(removeImg);
+// removeImg.forEach(image => {
+//     image.addEventListener(`click`, removeList);
+// })
+// const submitBtn = document.querySelector('.submitBtn');
+// submitBtn.addEventListener(`click`, (evt)=>{
+//     evt.preventDefault();
+//     console.log(evt.target)
+//     sideDiv.style.display=`none`
+// })
+
+// function removeList(el) {
+//     el.preventDefault();
+//     console.log(el.target);
+// }
