@@ -1,4 +1,4 @@
-//validate username and save to localStorage
+
 const user = document.getElementById(`username`);
 const form = document.getElementById(`user`);
 const menuDiv = document.getElementById(`menu`);
@@ -15,7 +15,7 @@ buttons.forEach(button => {
     button.addEventListener('click', handleMenu);
 });
 
-//not working on adding event listener.................
+//not working on adding event listener to the sidebar.................
 const removeImg = document.querySelectorAll(`.removeBtn`);
 console.log(removeImg);
 removeImg.forEach(image => {
@@ -28,6 +28,8 @@ submitBtn.addEventListener(`click`, (evt)=>{
 })
 
 //all functions
+
+//validate username. If it pass, side div will display.
 function handleUsername(evt){
     evt.preventDefault();
     const usernameValue = user.value.trim();
